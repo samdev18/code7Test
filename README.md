@@ -9,6 +9,8 @@ instalação:
 no arquivo .env, na sessão "DATABASE", coloque o IP de seu mongoDB e a porta e crie a base de dados "codetest" em seu mongoDB. <br/>
 DATABASE=mongodb://IP:PORTA/codetest
 
+OBSERVAÇÃO: Para esse teste, não coloquei autenticação no mongoDB, na conexão criada, o modo de autenticação selecionado deve ser "none"
+
 utilize o comando "npm install" no terminal na pasta do projeto para poder baixar as bibliotecas utilizadas no projeto.
 utilize o comando "npm start" para iniciar o projeto.
 
