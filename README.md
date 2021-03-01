@@ -25,9 +25,13 @@ há a possibilidade de fazer todos os processos via API, os endpoints são os se
 Buscar Dividas    - Metodo GET, endpoint: /api/dividas <br/><br/>
 --
 Cadastrar dividas - Método POST, endpoint: /api/dividas, parâmetros: motivo(String), valor(Number), data(Date no formato DD-MM-AAAA),idUser(id do usuário na api do JSONPLACEHOLDER)<br/><br/>
+--
 Atualizar divida  - Método PUT, endpoint: /api/divida/seq, parâmetros: motivo(String), valor(Number), data(Date no formato DD-MM-AAAA)<br/><br/>
+--
 Buscar divida ID  - Método GET, endpoint: /api/divida/seq<br/><br/>
+--
 Buscar divida pelo id do usuário na API  - Método GET, endpoint: /api/user/id/dividas, obs: o id passado nesse endpoint deve ser o id da api do jsonplaceholder já que no banco existe um relacionamento entre o id da api e o objeto User.<br/><br/>
+--
 Deletar divida    - Método DELETE, endpoint: /api/divida/seq<br/><br/>
 --
 
