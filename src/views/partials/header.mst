@@ -1,0 +1,18 @@
+<html>
+<head>
+    {{#pageTitle}} 
+        <title>{{pageTitle}} </title>
+    {{/pageTitle}} 
+    {{^pageTitle}} 
+        <title>{{h.defaultPageTitle}} </title>
+    {{/pageTitle}} 
+    <link rel="stylesheet" href="/assets/css/index.css"/>
+    <script src="/assets/js/fontawesome-use.js"></script>
+
+</head>
+<body>
+<header>
+
+    <h1>Teste Code7</h1>
+</header>
+<body>

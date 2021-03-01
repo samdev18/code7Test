@@ -1,0 +1,170 @@
+{{> header}}
+
+<div class="container">
+    <div class="sidebar">
+        <div class="btn-voltar">
+            <a href="/"><i class="fa fa-arrow-left" aria-hidden="true"></i> </a>
+        </div>
+
+        <div class="input-group">
+            <label class="labelSearch"> cliente:</label>
+            <div >
+                <select class="searchUser form-control" name="searchUser">
+                    <option value="0">Selecione</option>
+                    {{#users}}
+
+                    <option value="{{id}}">{{name}}</option>
+
+                    {{/users}}
+                </select>
+            </div>
+        </div>
+
+        <a class="btn-success btnSearch" href="#">Buscar</a>
+
+        {{#dividas}}
+        <a class="devedor" href="/divida/{{seq}}">{{devedor.name}} <br/>R$ {{valor}}</a>
+        {{/dividas}}
+    </div> 
+
+<div class="content">
+    {{#flashes}}
+            {{#success}}
+                <div  class="success" >{{.}}</div>
+            {{/success}}
+            {{#error}}
+                <div  class="warning" >{{.}}</div>
+            {{/error}}
+            {{#info}}
+                <div  class="warning" >{{.}}</div>
+            {{/info}}
+    {{/flashes}}
+    {{#divida}}
+        <form class="form" method="POST", action="/divida/{{seq}}">
+            <input type="text" name="seq" value="{{seq}}" class="sequence"/>
+
+            <div class="input-group">
+                <label> cliente:</label>
+                <div>
+                    <input type="text" class="form-control" disabled  value="{{devedor.name}}"/>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label>Motivo</label>
+                <div> 
+                    <input name="motivo" class="form-control" value="{{motivo}}" type="text"/>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Valor</label>
+                <div>
+                    <input name="valor" class="form-control" value="{{valor}}" onKeyPress="return(moeda(this,'.',',',event))" type="text"/>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Data</label>
+                <div>
+                    <input name="data" class="form-control" value="{{dataFormatada}}" type="date"/>
+                </div>
+            </div>
+
+            <div class="buttonsCrud">
+                <button type="submit" class="btn-success">Salvar</button>
+                <a href="/divida/delete/{{seq}}" class="btn-danger"> Deletar</a>
+            </div>
+        </form>
+    {{/divida}}
+
+    {{^divida}}
+        <form class="form" method="POST", action="/divida/register">
+
+            <div class="input-group">
+                <label> cliente:</label>
+                <div >
+                    <select id="users" name="idUser" class="form-control">
+
+                        {{#users}}
+
+                        <option value="{{id}}">{{name}}</option>
+
+                        {{/users}}
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Motivo</label>
+                <div> 
+                    <input name="motivo" class="form-control" type="text"/>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Valor</label>
+                <div>
+                    <input name="valor" class="form-control" value="0.00" onKeyPress="return(moeda(this,'.',',',event))" type="text"/>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Data</label>
+                <div>
+                    <input name="data" class="form-control" type="date"/>
+                </div>
+            </div>
+
+            <div class="buttonsCrud">
+                <button type="submit" class="btn-success">Adicionar</button>
+            </div>
+        </form>
+    {{/divida}}
+    <div class="btnNew">
+        <a class="btn-success" href="/"><i class="fa fa-plus"></i></a>
+    </div>
+</div>
+
+<script>
+function moeda(a, e, r, t) {
+    let n = ""
+      , h = j = 0
+      , u = tamanho2 = 0
+      , l = ajd2 = ""
+      , o = window.Event ? t.which : t.keyCode;
+    if (13 == o || 8 == o)
+        return !0;
+    if (n = String.fromCharCode(o),
+    -1 == "0123456789".indexOf(n))
+        return !1;
+    for (u = a.value.length,
+    h = 0; h < u && ("0" == a.value.charAt(h) || a.value.charAt(h) == r); h++)
+        ;
+    for (l = ""; h < u; h++)
+        -1 != "0123456789".indexOf(a.value.charAt(h)) && (l += a.value.charAt(h));
+    if (l += n,
+    0 == (u = l.length) && (a.value = ""),
+    1 == u && (a.value = "0" + r + "0" + l),
+    2 == u && (a.value = "0" + r + l),
+    u > 2) {
+        for (ajd2 = "",
+        j = 0,
+        h = u - 3; h >= 0; h--)
+            3 == j && (ajd2 += e,
+            j = 0),
+            ajd2 += l.charAt(h),
+            j++;
+        for (a.value = "",
+        tamanho2 = ajd2.length,
+        h = tamanho2 - 1; h >= 0; h--)
+            a.value += ajd2.charAt(h);
+        a.value += r + l.substr(u - 2, u)
+    }
+    return !1
+}
+document.querySelector('.searchUser').onchange = function(e){
+    document.querySelector('.btnSearch').href = `/user/${e.target.value}/dividas`
+}
+</script>
+</body>
