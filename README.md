@@ -21,13 +21,13 @@ para deletar uma dívida, ao entrar na tela de edição da dívida, clique em de
 para atualizar uma dívida, ao entrar na tela de edição da dívida, clique em salvar.
 
 há a possibilidade de fazer todos os processos via API, os endpoints são os seguintes:
-
+--------------------------------------------------------------------
 Buscar Dividas    - Metodo GET, endpoint: /api/dividas <br/><br/>
 Cadastrar dividas - Método POST, endpoint: /api/dividas, parâmetros: motivo(String), valor(Number), data(Date no formato DD-MM-AAAA),idUser(id do usuário na api do JSONPLACEHOLDER)<br/><br/>
 Atualizar divida  - Método PUT, endpoint: /api/divida/seq, parâmetros: motivo(String), valor(Number), data(Date no formato DD-MM-AAAA)<br/><br/>
 Buscar divida ID  - Método GET, endpoint: /api/divida/seq<br/><br/>
 Buscar divida pelo id do usuário na API  - Método GET, endpoint: /api/user/id/dividas, obs: o id passado nesse endpoint deve ser o id da api do jsonplaceholder já que no banco existe um relacionamento entre o id da api e o objeto User.<br/><br/>
 Deletar divida    - Método DELETE, endpoint: /api/divida/seq<br/><br/>
-
+--------------------------------------------------------------------
 o campo "seq" citado nos endpoints é o id sequencial das dividas, você pode saber esse id pela própria api ao usar o endpoint de busca de dividas ou na interface ao entrar na edição de uma díviva(o campo seq fica na URL).
 
